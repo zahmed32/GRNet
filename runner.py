@@ -48,6 +48,8 @@ def main():
 
     # Print config
     print('Use config:')
+    print("Using config partial path:", cfg.DATASETS.SHAPENET.PARTIAL_POINTS_PATH)
+
     pprint(cfg)
 
     # Set GPU to use

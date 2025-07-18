@@ -133,9 +133,6 @@ class ShapeNetDataLoader(object):
         """Prepare file list for the dataset"""
         file_list = []
 
-        print("PATH FORMAT:", cfg.DATASETS.SHAPENET.PARTIAL_POINTS_PATH)
-        print("ARGS:", subset, dc['taxonomy_id'], s, i)
-        
         for dc in self.dataset_categories:
             logging.info('Collecting files of Taxonomy [ID=%s, Name=%s]' % (dc['taxonomy_id'], dc['taxonomy_name']))
             samples = dc[subset]
