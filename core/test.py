@@ -73,6 +73,19 @@ def test_net(cfg, epoch_idx=-1, test_data_loader=None, test_writer=None, grnet=N
             test_losses.update([sparse_loss.item() * 1000, dense_loss.item() * 1000])
             _metrics = Metrics.get(dense_ptcloud, data['gtcloud'])
             test_metrics.update(_metrics)
+            if model_idx < 10:  # or remove this check if you want all
+                from utils.helpers import save_ptcloud_img
+                import os
+
+                save_dir = os.path.join('/content/drive/MyDrive/grnet_outputs', taxonomy_id)
+                os.makedirs(save_dir, exist_ok=True)
+                base_name = f"{model_id}"
+
+                save_ptcloud_img(sparse_ptcloud.squeeze().cpu().numpy(),
+                                 os.path.join(save_dir, f"{base_name}_sparse.png"))
+                save_ptcloud_img(dense_ptcloud.squeeze().cpu().numpy(),
+                                 os.path.join(save_dir, f"{base_name}_dense.png"))
+                save_ptcloud_img(data['gtcloud'].squeeze().cpu().numpy(), os.path.join(save_dir, f"{base_name}_gt.png"))
 
             if taxonomy_id not in category_metrics:
                 category_metrics[taxonomy_id] = AverageMeter(Metrics.names())

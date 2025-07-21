@@ -56,3 +56,18 @@ def get_ptcloud_img(ptcloud):
     img = np.fromstring(fig.canvas.tostring_rgb(), dtype=np.uint8, sep='')
     img = img.reshape(fig.canvas.get_width_height()[::-1] + (3, ))
     return img
+
+def save_ptcloud_img(ptcloud, save_path):
+    fig = plt.figure(figsize=(8, 8))
+    x, z, y = ptcloud.transpose(1, 0)
+    ax = fig.gca(projection='3d', adjustable='box')
+    ax.axis('off')
+    ax.axis('scaled')
+    ax.view_init(30, 45)
+    max_, min_ = np.max(ptcloud), np.min(ptcloud)
+    ax.set_xbound(min_, max_)
+    ax.set_ybound(min_, max_)
+    ax.set_zbound(min_, max_)
+    ax.scatter(x, y, z, zdir='z', c=x, cmap='jet')
+    plt.savefig(save_path, bbox_inches='tight')
+    plt.close()
