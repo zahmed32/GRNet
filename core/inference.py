@@ -59,7 +59,7 @@ def inference_net(cfg):
             if not os.path.exists(output_folder):
                 os.makedirs(output_folder)
 
-            output_file_path = os.path.join(output_folder, '%s.h5' % model_id)
+            output_file_path = os.path.join(output_folder, '%s.pcd' % model_id)
             utils.io.IO.put(output_file_path, dense_ptcloud.squeeze().cpu().numpy())
 
             logging.info('Test[%d/%d] Taxonomy = %s Sample = %s File = %s' %
