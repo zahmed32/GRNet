@@ -57,8 +57,3 @@ def get_ptcloud_img(ptcloud):
     img = img.reshape(fig.canvas.get_width_height()[::-1] + (3, ))
     return img
 
-def save_ptcloud_pcd(ptcloud: np.ndarray, path: str):
-
-    pcd = o3d.geometry.PointCloud()
-    pcd.points = o3d.utility.Vector3dVector(ptcloud)
-    o3d.io.write_point_cloud(path, pcd)

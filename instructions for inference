@@ -1,0 +1,5 @@
+1. Configure test dataset path in config.py
+2. Modify inference_net function to store output as pcd- the helper function code is in 
+   Io.py
+3. If using x3d- sample points from inference image mesh using poisson sampling- save as ply
+4. Use open3d to convert ply to pad.
