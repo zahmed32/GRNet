@@ -3,3 +3,4 @@
    Io.py
 3. If using x3d- sample points from inference image mesh using poisson sampling- save as ply
 4. Use open3d to convert ply to pad.
+1d63eb2b1f78aa88acf77e718d93f3e1.pcd
